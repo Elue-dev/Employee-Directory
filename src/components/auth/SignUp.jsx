@@ -84,6 +84,7 @@ export default function SignUp() {
     try {
       setLoading(true);
       await googleSignIn();
+      navigate("/")
       setLoading(false);
     } catch (error) {
       setError(error.message);
