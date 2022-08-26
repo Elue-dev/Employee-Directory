@@ -17,7 +17,7 @@
     }
   }
   label {
-    input {
+    .search {
       margin-top: 2rem;
       width: 100%;
       padding: 0.6rem;
@@ -26,6 +26,7 @@
   }
   .departments {
     @include flexBox(center, center, row);
+    flex-wrap: wrap;
     margin: 1rem 0;
     cursor: pointer;
     li {
@@ -34,6 +35,7 @@
       background: rgb(201, 201, 201);
       padding: 0.4rem;
       border-radius: 0.3rem;
+      font-weight: 500;
       &.active {
         background: #444;
         color: #fff;

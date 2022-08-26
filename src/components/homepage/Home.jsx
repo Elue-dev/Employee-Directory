@@ -18,9 +18,11 @@ import {
   FILTER_BY_NAME,
   selectFilteredEmployees,
 } from "../../redux/filterSlice";
+import Info from "./info/Info";
 
 export default function Home() {
   const [form, setForm] = useState(false);
+  const [info, setInfo] = useState(false);
   const [employees, setEmployees] = useState([]);
   const [search, setSearch] = useState("");
   const [depts, setDepts] = useState("All");
@@ -63,10 +65,6 @@ export default function Home() {
   const clearFilters = () => {
     setSearch("");
     setDepts("All");
-  };
-
-  const handleFormVisibility = () => {
-    setForm(true);
   };
 
   const handleShowDetails = (id, name) => {
@@ -130,16 +128,17 @@ export default function Home() {
 
   return (
     <div className="home">
-      <Navbar />
+      <Navbar setInfo={setInfo} />
       <AddEmployee form={form} setForm={setForm} />
-      <div className="add__icon" onClick={handleFormVisibility}>
+      <Info info={info} setInfo={setInfo} />
+      <div className="add__icon" onClick={() => setForm(!form)}>
         <AiOutlinePlus className="icon" />
       </div>
-
       <div className="employees__list">
         <label>
           <input
             type="search"
+            className="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by Name or Location..."

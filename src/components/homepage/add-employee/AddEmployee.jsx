@@ -82,6 +82,10 @@ export default function AddEmployee({ form, setForm }) {
   };
   return (
     <section className={form ? "show__form" : null}>
+      <div
+        className={form ? "overlay reveal" : "overlay"}
+        onClick={() => setForm(false)}
+      />
       <div className="add__employee">
         <div className="add__employee__contents">
           <h2>ADD EMPLOYEE</h2>
