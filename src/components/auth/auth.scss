@@ -1,0 +1,68 @@
+@import "../../global-styles/globalStyles.scss";
+
+main {
+  background-color: $mainColor;
+  height: 100vh;
+  .auth {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+    width: 500px;
+    .auth__contents {
+      background: #fff;
+      box-shadow: $box-shadow;
+      padding: 0.3rem 0.5rem;
+      h2 {
+        margin: 1rem 0;
+      }
+      form {
+        max-width: 450px;
+        padding: 0.3rem 0.5rem;
+        label {
+          span {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+          }
+          input {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #333;
+            border-radius: 0.3rem;
+            width: 105%;
+            outline: 0;
+          }
+        }
+        button {
+          @include button();
+          background: $mainColor;
+          color: #fff;
+          padding: 0.5rem 1rem;
+          width: 105%;
+        }
+      }
+      .google__btn {
+        @include button();
+        background-color: rgb(228, 228, 228);
+        color: #333;
+        border: 1px solid #333;
+        width: 105%;
+        margin-top: 0.6rem;
+        padding: 0.5rem;
+      }
+      .account {
+        text-align: center;
+        margin-top: 1rem;
+        font-weight: 700;
+        a {
+          color: $mainColor;
+        }
+      }
+    }
+  }
+  .error__message {
+    color: crimson;
+  }
+}

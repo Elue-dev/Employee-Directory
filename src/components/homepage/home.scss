@@ -1,0 +1,103 @@
+@import "../../global-styles/globalStyles.scss";
+
+.home {
+  background-color: rgb(234, 234, 234);
+  height: 100vh;
+  .add__icon {
+    position: fixed;
+    bottom: 4rem;
+    right: 8rem;
+    .icon {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: rgb(199, 55, 84);
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+  .employees__list {
+    @include container();
+    .table {
+      margin-top: 1rem;
+      padding: 5px;
+      width: 100%;
+      overflow-x: auto;
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 1rem;
+
+        thead {
+          border-top: 2px solid rgb(162, 61, 81);
+          border-bottom: 2px solid rgb(162, 61, 81);
+        }
+
+        th {
+          border: 1px solid #eee;
+        }
+
+        th,
+        td {
+          vertical-align: top;
+          text-align: left;
+          padding: 8px;
+          &.icons {
+            > * {
+              margin-right: 5px;
+              cursor: pointer;
+            }
+          }
+        }
+
+        tr {
+          border-bottom: 1px solid #ccc;
+          cursor: pointer;
+          .image {
+            height: 40px;
+            width: 100px;
+            @include flexBox(center, center, column);
+          }
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+          }
+        }
+
+        tr:nth-child(even) {
+          background-color: #eee;
+        }
+      }
+    }
+
+    @include mQ(600px) {
+      .table table {
+        font-size: 0.81rem;
+      }
+    }
+  }
+}
+
+.loader {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  background-color: rgb(234, 234, 234);
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: -1;
+  }
+}

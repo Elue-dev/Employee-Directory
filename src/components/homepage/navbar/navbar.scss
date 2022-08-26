@@ -1,0 +1,21 @@
+@import "../../../global-styles/globalStyles.scss";
+
+.navbar {
+  background-color: $mainColor;
+  color: #fff;
+  padding: 1rem;
+  .navbar__contents {
+    @include container();
+    @include flexBox(space-between, center, row);
+    button {
+      @include button();
+      background: transparent;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid #fff;
+      font-weight: 500;
+      color: #fff;
+      margin-right: 1rem;
+      font-size: 1rem;
+    }
+  }
+}

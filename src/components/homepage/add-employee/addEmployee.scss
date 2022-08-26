@@ -1,0 +1,92 @@
+@import "../../../global-styles/globalStyles.scss";
+
+section {
+  background: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  display: none;
+  &.show__form {
+    display: block;
+  }
+  .add__employee {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.5);
+    .add__employee__contents {
+      background: #fff;
+      box-shadow: $box-shadow;
+      padding: 0.3rem 0.5rem;
+      width: 400px;
+      h2 {
+        margin: 1rem 0;
+        text-align: center;
+      }
+      form {
+        max-width: 450px;
+        padding: 0.3rem 0.5rem;
+        label {
+          span {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+          }
+          input {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #333;
+            border-radius: 0.3rem;
+            width: 100%;
+            outline: 0;
+          }
+        }
+        .buttons {
+          @include flexBox(flex-start, center, row);
+          button {
+            @include button();
+            background: $mainColor;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            width: 50%;
+          }
+          .cancel__btn {
+            background: rgb(199, 55, 84);
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+.progress {
+    background-color: #aaa;
+    border: 1px solid transparent;
+    border-radius: 0.2rem;
+    margin-bottom: .2rem;
+    .progress-bar {
+      background-color: rgb(19, 178, 19);
+      border: 1px solid rgb(19, 178, 19);
+      border-radius: 0.2rem;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 500;
+      padding: 0 1rem;
+    }
+  }
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(-5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes slide-down {
+  0% {
+    transform: translateY(5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
