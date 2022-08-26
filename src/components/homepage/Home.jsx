@@ -11,26 +11,65 @@ import { database, storage } from "../../firebase";
 import { deleteDoc, doc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import Notiflix from "notiflix";
-import { Link, useNavigate } from "react-router-dom";
-import EmployeeDetails from "./employee-details/EmployeeDetails";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  FILTER_BY_DEPARTMENT,
+  FILTER_BY_NAME,
+  selectFilteredEmployees,
+} from "../../redux/filterSlice";
 
 export default function Home() {
   const [form, setForm] = useState(false);
   const [employees, setEmployees] = useState([]);
-  const [details, setDetails] = useState(false);
+  const [search, setSearch] = useState("");
+  const [depts, setDepts] = useState("All");
   const { data, loading } = useFetchCollection("employees");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const filteredEmployees = useSelector(selectFilteredEmployees);
+
+  const departments = [
+    "All",
+    ...new Set(employees.map((employee) => employee.department)),
+  ];
+
+  let employeesArray = [];
+  if (depts === "All") {
+    employeesArray = employees;
+  } else {
+    employeesArray = filteredEmployees;
+  }
 
   useEffect(() => {
     setEmployees(data);
   }, [data]);
+
+  useEffect(() => {
+    dispatch(
+      FILTER_BY_NAME({
+        employees,
+        search,
+      })
+    );
+  }, [dispatch, employees, search]);
+
+  const filterByDepartment = (dept) => {
+    setDepts(dept);
+    setSearch("");
+    dispatch(FILTER_BY_DEPARTMENT({ employees, departments: dept }));
+  };
+
+  const clearFilters = () => {
+    setSearch("");
+    setDepts("All");
+  };
 
   const handleFormVisibility = () => {
     setForm(true);
   };
 
   const handleShowDetails = (id, name) => {
-    setDetails(true);
     navigate(`/employee/${name}/${id}`);
   };
 
@@ -96,66 +135,103 @@ export default function Home() {
       <div className="add__icon" onClick={handleFormVisibility}>
         <AiOutlinePlus className="icon" />
       </div>
+
       <div className="employees__list">
-        <div className="table">
-          <table>
-            <thead>
-              <tr>
-                <th>S/N</th>
-                <th>Name</th>
-                <th>Profile Picture</th>
-                <th>Department</th>
-                <th>Job Description</th>
-                <th>Location</th>
-                <th>Date Added</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {employees?.map((employee, index) => {
-                const {
-                  id,
-                  name,
-                  department,
-                  imageUrl,
-                  addedAt,
-                  location,
-                  description,
-                } = employee;
-                return (
-                  <tr key={id}>
-                    <td>{index + 1}</td>
-                    <td>{name}</td>
-                    <td className="image">
-                      <img
-                        src={imageUrl}
-                        alt={name}
-                        style={{ width: "100px" }}
-                      />
-                    </td>
-                    <td>{department}</td>
-                    <td>{description}</td>
-                    <td>{location}</td>
-                    <td>{addedAt}</td>
-                    <td className="icons">
-                      <BsEyeFill
-                        size={20}
-                        color="#000"
-                        onClick={() => handleShowDetails(id, name)}
-                      />
-                      &nbsp;
-                      <FaTrashAlt
-                        size={18}
-                        color="rgb(199, 55, 84)"
-                        onClick={() => confirmDelete(id, name, imageUrl)}
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        <label>
+          <input
+            type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search by Name or Location..."
+          />
+        </label>
+        <div className="departments">
+          {departments.map((department, index) => (
+            <li
+              key={index}
+              onClick={() => filterByDepartment(department)}
+              className={depts === department ? "active" : null}
+            >
+              {department}
+            </li>
+          ))}
+          <button onClick={clearFilters}>Clear Filters</button>
         </div>
+        {search ? (
+          <>
+            <h3 className="search__results">
+              Search results for{" "}
+              <em style={{ color: "rgb(199, 55, 84)" }}>
+                <b>"{search}"</b>
+              </em>
+            </h3>
+          </>
+        ) : null}
+        {filteredEmployees.length === 0 ? (
+          <>
+            <h2 className="no__results">No employees match your search</h2>
+          </>
+        ) : (
+          <div className="table">
+            <table>
+              <thead>
+                <tr>
+                  <th>S/N</th>
+                  <th>Name</th>
+                  <th>Profile Picture</th>
+                  <th>Department</th>
+                  <th>Job Description</th>
+                  <th>Location</th>
+                  <th>Date Added</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {employeesArray?.map((employee, index) => {
+                  const {
+                    id,
+                    name,
+                    department,
+                    imageUrl,
+                    addedAt,
+                    location,
+                    description,
+                  } = employee;
+                  return (
+                    <tr key={id}>
+                      <td>{index + 1}</td>
+                      <td>{name}</td>
+                      <td className="image">
+                        <img
+                          src={imageUrl}
+                          alt={name}
+                          style={{ width: "100px" }}
+                        />
+                      </td>
+                      <td>{department}</td>
+                      <td>{description}</td>
+                      <td>{location}</td>
+                      <td>{addedAt}</td>
+                      <td className="icons">
+                        <BsEyeFill
+                          size={20}
+                          color="#000"
+                          onClick={() => handleShowDetails(id, name)}
+                        />
+                        &nbsp;
+                        <FaTrashAlt
+                          size={18}
+                          color="rgb(199, 55, 84)"
+                          onClick={() => confirmDelete(id, name, imageUrl)}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );

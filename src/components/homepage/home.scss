@@ -16,6 +16,49 @@
       cursor: pointer;
     }
   }
+  label {
+    input {
+      margin-top: 2rem;
+      width: 100%;
+      padding: 0.6rem;
+      outline: 0;
+    }
+  }
+  .departments {
+    @include flexBox(center, center, row);
+    margin: 1rem 0;
+    cursor: pointer;
+    li {
+      list-style: none;
+      margin-right: 1rem;
+      background: rgb(201, 201, 201);
+      padding: 0.4rem;
+      border-radius: 0.3rem;
+      &.active {
+        background: #444;
+        color: #fff;
+        font-weight: 700;
+      }
+    }
+    button {
+      background-color: rgb(199, 55, 84);
+      color: #fff;
+      padding: 0.4rem;
+      border-radius: 0.3rem;
+      border: 0;
+      outline: 0;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  }
+  .search__results {
+    text-align: center;
+    margin: 1.5rem 0;
+  }
+  .no__results {
+    text-align: center;
+  }
   .employees__list {
     @include container();
     .table {
@@ -42,7 +85,7 @@
         td {
           vertical-align: top;
           text-align: left;
-          padding: 8px;
+          padding: 12px 8px;
           &.icons {
             > * {
               margin-right: 5px;
@@ -55,7 +98,7 @@
           border-bottom: 1px solid #ccc;
           cursor: pointer;
           .image {
-            height: 40px;
+            height: 60px;
             width: 100px;
             @include flexBox(center, center, column);
           }
