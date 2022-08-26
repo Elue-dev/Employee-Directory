@@ -16,7 +16,7 @@ export default function Info({ info, setInfo }) {
         <br />
         <p>
           The github repository for this project can be found{" "}
-          <a href="">Here</a>
+          <a href="https://github.com/Elue-dev/Employee-Directory">Here</a>
         </p>
         <button onClick={() => setInfo(false)}>Got it!</button>
       </div>

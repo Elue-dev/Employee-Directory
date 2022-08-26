@@ -20,6 +20,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-weight: 400;
     h2 {
       margin: 1rem 0;
     }
@@ -36,5 +37,14 @@
       color: #fff;
       padding: 0.5rem 0.8rem;
     }
+  }
+}
+
+@include mQ(500px) {
+  .info .info__contents {
+    width: 348px;
+  }
+  .info .info__contents button {
+    width: 100%;
   }
 }

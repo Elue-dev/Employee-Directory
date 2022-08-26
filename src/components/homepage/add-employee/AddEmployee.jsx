@@ -71,8 +71,8 @@ export default function AddEmployee({ form, setForm }) {
         createdAt: Timestamp.now().toDate(),
       };
       await addDoc(docReference, employeesConfig);
-      setLoading(false);
       setForm(false);
+      setLoading(false);
       setEmployee(initialState);
       setUploadProgress(0);
       navigate("");
@@ -88,7 +88,7 @@ export default function AddEmployee({ form, setForm }) {
       />
       <div className="add__employee">
         <div className="add__employee__contents">
-          <h2>ADD EMPLOYEE</h2>
+          <h2>Add Employee</h2>
           <form onSubmit={addEmployeeToDatabase}>
             <label>
               <span>Name:</span>

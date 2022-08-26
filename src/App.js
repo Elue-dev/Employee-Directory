@@ -4,6 +4,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import SignUp from "./components/auth/SignUp";
 import Login from "./components/auth/Login";
 import EmployeeDetails from "./components/homepage/employee-details/EmployeeDetails";
+import Reset from "./components/auth/Reset";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/reset" element={<Reset />} />
           <Route path="/employee/:name/:id" element={<EmployeeDetails />} />
         </Routes>
       </div>

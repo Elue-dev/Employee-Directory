@@ -1,7 +1,6 @@
 @import "../../global-styles/globalStyles.scss";
 
 .home {
-  background-color: rgb(234, 234, 234);
   height: 100vh;
   .add__icon {
     position: fixed;
@@ -16,14 +15,40 @@
       cursor: pointer;
     }
   }
-  label {
+  .label {
+    @include flexBox(center, center, row);
+    gap: 0.5rem;
     .search {
       margin-top: 2rem;
       width: 100%;
       padding: 0.6rem;
       outline: 0;
+      border: 0;
+      border-radius: 0.3rem;
+      background: rgb(201, 201, 201);
+      &:focus {
+        border: 2px solid $mainColor;
+      }
+    }
+    .clear__search {
+      background-color: rgb(199, 55, 84);
+      color: #fff;
+      padding: 0.4rem;
+      border-radius: 0.3rem;
+      border: 0;
+      outline: 0;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
     }
   }
+  .welcome {
+    text-align: right;
+    @include container();
+    font-weight: 700;
+    margin-top: 0.3rem;
+  }
+
   .departments {
     @include flexBox(center, center, row);
     flex-wrap: wrap;
@@ -41,17 +66,6 @@
         color: #fff;
         font-weight: 700;
       }
-    }
-    button {
-      background-color: rgb(199, 55, 84);
-      color: #fff;
-      padding: 0.4rem;
-      border-radius: 0.3rem;
-      border: 0;
-      outline: 0;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
     }
   }
   .search__results {
@@ -144,5 +158,22 @@
     height: 100%;
     opacity: 0.8;
     z-index: -1;
+  }
+}
+
+@include mQ(600px) {
+  .home {
+    height: auto;
+  }
+  .home .add__icon {
+    right: 2rem;
+    bottom: 1rem;
+  }
+  .home .departments {
+    display: block;
+  }
+  .home .departments li {
+    margin-bottom: 0.15rem;
+    width: 100%;
   }
 }

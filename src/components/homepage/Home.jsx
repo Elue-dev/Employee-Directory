@@ -19,6 +19,7 @@ import {
   selectFilteredEmployees,
 } from "../../redux/filterSlice";
 import Info from "./info/Info";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Home() {
   const [form, setForm] = useState(false);
@@ -27,6 +28,7 @@ export default function Home() {
   const [search, setSearch] = useState("");
   const [depts, setDepts] = useState("All");
   const { data, loading } = useFetchCollection("employees");
+  const { user } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const filteredEmployees = useSelector(selectFilteredEmployees);
@@ -36,12 +38,14 @@ export default function Home() {
     ...new Set(employees.map((employee) => employee.department)),
   ];
 
-  let employeesArray = [];
-  if (depts === "All") {
-    employeesArray = employees;
-  } else {
-    employeesArray = filteredEmployees;
-  }
+  // let employeesArray = [];
+  // if (depts === "All") {
+  //   employeesArray = employees;
+  // } else if (search !== "") {
+  //   employeesArray = employees;
+  // } else {
+  //   employeesArray = filteredEmployees;
+  // }
 
   useEffect(() => {
     setEmployees(data);
@@ -60,11 +64,6 @@ export default function Home() {
     setDepts(dept);
     setSearch("");
     dispatch(FILTER_BY_DEPARTMENT({ employees, departments: dept }));
-  };
-
-  const clearFilters = () => {
-    setSearch("");
-    setDepts("All");
   };
 
   const handleShowDetails = (id, name) => {
@@ -134,8 +133,9 @@ export default function Home() {
       <div className="add__icon" onClick={() => setForm(!form)}>
         <AiOutlinePlus className="icon" />
       </div>
+      <p className="welcome">Welcome, {user.displayName}!</p>
       <div className="employees__list">
-        <label>
+        <label className="label">
           <input
             type="search"
             className="search"
@@ -143,6 +143,9 @@ export default function Home() {
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by Name or Location..."
           />
+          {/* <button onClick={() => setSearch("")} className="clear__search">
+            Clear Search
+          </button> */}
         </label>
         <div className="departments">
           {departments.map((department, index) => (
@@ -154,7 +157,6 @@ export default function Home() {
               {department}
             </li>
           ))}
-          <button onClick={clearFilters}>Clear Filters</button>
         </div>
         {search ? (
           <>
@@ -186,7 +188,7 @@ export default function Home() {
                 </tr>
               </thead>
               <tbody>
-                {employeesArray?.map((employee, index) => {
+                {filteredEmployees?.map((employee, index) => {
                   const {
                     id,
                     name,

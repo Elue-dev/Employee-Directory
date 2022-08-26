@@ -5,21 +5,41 @@
   color: #fff;
   padding: 1rem;
   .navbar__contents {
-    @include container();
+    // @include container();
     @include flexBox(space-between, center, row);
+    padding: .1rem 3rem;
     button {
       @include button();
       background: transparent;
       padding: 0.3rem 0.7rem;
       border: 1px solid #fff;
-      font-weight: 500;
+      font-weight: 600;
       color: #fff;
       margin-right: 1rem;
       font-size: 1rem;
       &:hover {
         background: #fff;
         color: #333;
+        font-weight: 700;
       }
     }
+  }
+}
+
+@include mQ(500px) {
+  .navbar .navbar__contents h3 {
+    font-size: 1rem;
+  }
+  .navbar .navbar__contents button {
+    margin-right: 0.4rem;
+  }
+}
+@include mQ(350px) {
+  .navbar .navbar__contents {
+    display: block;
+    text-align: center;
+  }
+  .navbar .navbar__contents h3 {
+    margin-bottom: 0.5rem;
   }
 }
