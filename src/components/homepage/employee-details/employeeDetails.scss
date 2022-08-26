@@ -31,6 +31,7 @@
       h2 {
         margin: 1rem 0;
         text-align: center;
+        color: rgb(199, 55, 84);
       }
     }
     .content__det {
@@ -50,5 +51,14 @@
         line-height: 1.7;
       }
     }
+  }
+}
+
+@include mQ(500px) {
+  .section .employee__details .employee__details__contents {
+    width: 349px;
+  }
+  .section .employee__details .content__det {
+    flex-direction: column;
   }
 }
