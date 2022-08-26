@@ -33,7 +33,7 @@
  <img width="1440" alt="Screen Shot 2022-08-26 at 07 03 39" src="https://user-images.githubusercontent.com/79481288/186833230-3f52e114-6d5a-4b29-b2d1-053d9a1abc65.png">
 
 #### A form to add employees to the directory
-<img width="1440" alt="Screen Shot 2022-08-26 at 06 49 00" src="https://user-images.githubusercontent.com/79481288/186833317-41d46c0e-2701-49a7-96ea-2c684266337c.png">
+<img width="1440" alt="Screen Shot 2022-08-26 at 06 48 51" src="https://user-images.githubusercontent.com/79481288/186834302-f98b4f21-8807-4827-959e-4c772a557b4b.png">
 
 #### A brief description of the application
 <img width="1440" alt="Screen Shot 2022-08-26 at 06 48 39" src="https://user-images.githubusercontent.com/79481288/186831993-2129e247-bda9-4e12-a6b4-fea440c45b13.png">
