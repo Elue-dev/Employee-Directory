@@ -7,7 +7,7 @@
   .navbar__contents {
     // @include container();
     @include flexBox(space-between, center, row);
-    padding: .1rem 3rem;
+    padding: 0.1rem 3rem;
     button {
       @include button();
       background: transparent;
@@ -27,6 +27,10 @@
 }
 
 @include mQ(500px) {
+  .navbar .navbar__contents {
+    padding: 0;
+  }
+
   .navbar .navbar__contents h3 {
     font-size: 1rem;
   }

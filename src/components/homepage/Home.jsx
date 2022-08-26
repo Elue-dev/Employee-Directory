@@ -38,14 +38,10 @@ export default function Home() {
     ...new Set(employees.map((employee) => employee.department)),
   ];
 
-  // let employeesArray = [];
-  // if (depts === "All") {
-  //   employeesArray = employees;
-  // } else if (search !== "") {
-  //   employeesArray = employees;
-  // } else {
-  //   employeesArray = filteredEmployees;
-  // }
+  const handleShowForm = () => {
+    window.scrollTo(0, 0);
+    setForm(true);
+  };
 
   useEffect(() => {
     setEmployees(data);
@@ -130,7 +126,7 @@ export default function Home() {
       <Navbar setInfo={setInfo} />
       <AddEmployee form={form} setForm={setForm} />
       <Info info={info} setInfo={setInfo} />
-      <div className="add__icon" onClick={() => setForm(!form)}>
+      <div className="add__icon" onClick={handleShowForm}>
         <AiOutlinePlus className="icon" />
       </div>
       <p className="welcome">Welcome, {user.displayName}!</p>
@@ -143,11 +139,9 @@ export default function Home() {
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by Name or Location..."
           />
-          {/* <button onClick={() => setSearch("")} className="clear__search">
-            Clear Search
-          </button> */}
         </label>
         <div className="departments">
+          <p>Filter By Department:</p>
           {departments.map((department, index) => (
             <li
               key={index}
