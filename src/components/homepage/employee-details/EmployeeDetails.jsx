@@ -74,10 +74,10 @@ export default function EmployeeDetails() {
             </p>
             <br />
             <p className="e_expenses">
-              <p className="e_title">Expenses by {employee?.name}</p>
+              <p className="e_title">Expenses by {employee?.name} <span style={{color: '#333'}}>({filteredExpenses.length})</span></p>
               <>
                 <>
-                  {!filteredExpenses ? (
+                  {!filteredExpenses.length ? (
                     <>
                       {" "}
                       <span>
@@ -89,7 +89,7 @@ export default function EmployeeDetails() {
                       {filteredExpenses.map((ex) => (
                         <div key={ex.id} className="ex_fil">
                           <p>
-                            &rarr; <b style={{ paddingTop: "1rem" }}>Amount:</b>{" "}
+                            <b style={{ paddingTop: "1rem" }}>Amount:</b>{" "}
                             ${ex?.amount}
                           </p>
                           <p>
