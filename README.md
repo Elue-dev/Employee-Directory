@@ -38,4 +38,18 @@
 ### A brief description of the application
 <img width="1440" alt="Screen Shot 2022-08-26 at 06 48 39" src="https://user-images.githubusercontent.com/79481288/186831993-2129e247-bda9-4e12-a6b4-fea440c45b13.png">
 
+## Employee Expense Log
+
+### This page shows all the expenses made by emplopees, the expense status, reason for expense, date of expense, etc...Expenses can also be filtered and sorted in numerous ways eg, highest total, loweest total, merchant, expense status etc.
+<img width="1440" alt="Screen Shot 2022-08-27 at 03 07 38" src="https://user-images.githubusercontent.com/79481288/187010209-fa6579a9-22b7-4053-8283-3f0cc0902023.png">
+
+### Form for adding new Expenses.
+<img width="1440" alt="Screen Shot 2022-08-27 at 03 07 51" src="https://user-images.githubusercontent.com/79481288/187010222-7ec0d573-196e-48c9-8fca-a160640d8370.png">
+
+### Form for editing expenses
+<img width="1440" alt="Screen Shot 2022-08-27 at 03 07 57" src="https://user-images.githubusercontent.com/79481288/187010215-8d1c6536-cc43-46be-944b-b7c46c89163f.png">
+
+### Also, in the employee details section, expenses made by that particular employee is also rendered, if the employee has no expenses, it is well stated.
+<img width="1440" alt="Screen Shot 2022-08-27 at 03 14 28" src="https://user-images.githubusercontent.com/79481288/187010336-dbc78c7b-c0a5-4e60-a27f-a3fda922df3a.png">
+
 
