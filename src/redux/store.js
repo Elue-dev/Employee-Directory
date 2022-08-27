@@ -1,8 +1,10 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import filterReducer from "./filterSlice";
+import expenseReducer from "./expenseSlice";
 
 const rootReducer = combineReducers({
   filter: filterReducer,
+  expense: expenseReducer,
 });
 
 const store = configureStore({

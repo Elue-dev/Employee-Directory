@@ -5,6 +5,8 @@ import SignUp from "./components/auth/SignUp";
 import Login from "./components/auth/Login";
 import EmployeeDetails from "./components/homepage/employee-details/EmployeeDetails";
 import Reset from "./components/auth/Reset";
+import EmployeeExpenses from "./pages/employee-expenses/EmployeeExpenses";
+import ExpenseForm from "./pages/employee-expenses/expense-form/ExpenseForm";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/reset" element={<Reset />} />
           <Route path="/employee/:name/:id" element={<EmployeeDetails />} />
+          <Route path="/employee-expenses" element={<EmployeeExpenses />} />
+          <Route path="/expense-form/:id" element={<ExpenseForm />} />
         </Routes>
       </div>
     </BrowserRouter>

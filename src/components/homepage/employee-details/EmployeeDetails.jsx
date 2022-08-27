@@ -2,18 +2,28 @@ import React, { useEffect, useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { useNavigate, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import useFetchCollection from "../../../hooks/useFetchCollection";
 import useFetchDocuments from "../../../hooks/useFetchDocument";
 import "./employeeDetails.scss";
 
 export default function EmployeeDetails() {
   const { id } = useParams();
   const [employee, setEmployee] = useState(null);
+  const [expenses, setExpenses] = useState(null);
   const { document } = useFetchDocuments("employees", id);
+  const { data } = useFetchCollection("expenses");
   const navigate = useNavigate();
+  const filteredExpenses = expenses?.find(
+    (ex) => ex.employee_name.toLowercase === employee?.name
+  );
 
   useEffect(() => {
     setEmployee(document);
   }, [document]);
+
+  useEffect(() => {
+    setExpenses(data);
+  }, [data]);
 
   if (!document) {
     return (
@@ -61,6 +71,37 @@ export default function EmployeeDetails() {
               <p>
                 <b>Date Added:</b>
                 &nbsp;{employee?.addedAt}
+              </p>
+              <br />
+              <p className="e_expenses">
+                <p className="e_title">Expenses by {employee?.name}</p>
+                <>
+                  <>
+                    {!filteredExpenses ? (
+                      <>
+                        {" "}
+                        <span>
+                          {employee?.name} has not made any expenses yet.
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <p>
+                          <b>Amount:</b> ${filteredExpenses?.amount}
+                        </p>
+                        <p>
+                          <b>Expense Date:</b> {filteredExpenses?.addedAt}
+                        </p>
+                        <p>
+                          <b>Reason for Expense:</b> {filteredExpenses?.comment}
+                        </p>
+                        <p>
+                          <b>Expense Status:</b> {filteredExpenses?.status}.
+                        </p>
+                      </>
+                    )}
+                  </>
+                </>
               </p>
             </div>
           </div>

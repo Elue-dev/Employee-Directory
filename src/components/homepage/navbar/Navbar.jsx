@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import "./navbar.scss";
 
@@ -19,7 +19,10 @@ export default function Navbar({ setInfo }) {
   return (
     <div className="navbar">
       <div className="navbar__contents">
-        <h3>Employee Directory</h3>
+        <Link to="/">
+          {" "}
+          <h3>Employee Directory</h3>
+        </Link>
         <div className="right__contents">
           <button onClick={() => setInfo(true)}>INFO</button>
           <button onClick={logOutUser}>LOGOUT</button>

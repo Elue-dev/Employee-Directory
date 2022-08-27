@@ -1,0 +1,122 @@
+@import "../../global-styles/globalStyles.scss";
+
+.employee__expenses {
+  .add__icon {
+    position: fixed;
+    bottom: 4rem;
+    right: 8rem;
+    .icon {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: rgb(199, 55, 84);
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+  .intro {
+    text-align: center;
+    text-transform: uppercase;
+    margin: 1rem 0;
+  }
+  .no__results {
+    text-align: center;
+    margin-top: 1.4rem;
+    font-style: italic;
+    font-weight: 700;
+  }
+  .expense__content {
+    @include container();
+    fieldset {
+      padding: 9px 25px;
+      border-radius: 0.3rem;
+      margin-top: 1.4rem;
+      legend {
+        text-transform: uppercase;
+        color: rgb(199, 55, 84);
+        padding: 0 0.4rem;
+      }
+      h3 {
+        margin-bottom: 0.5rem;
+      }
+      select {
+        width: 100%;
+        padding: 0.4rem;
+        color: $mainColor;
+        border-radius: 0.3rem;
+        margin-bottom: 1rem;
+        outline: 0;
+      }
+    }
+    .table {
+      margin-top: 1rem;
+      padding: 5px;
+      width: 100%;
+      overflow-x: auto;
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 1rem;
+
+        thead {
+          border-top: 2px solid rgb(162, 61, 81);
+          border-bottom: 2px solid rgb(162, 61, 81);
+        }
+
+        th {
+          border: 1px solid #eee;
+        }
+
+        th,
+        td {
+          vertical-align: top;
+          text-align: left;
+          padding: 12px 8px;
+          &.icons {
+            > * {
+              margin-right: 5px;
+              cursor: pointer;
+            }
+          }
+        }
+
+        tr {
+          border-bottom: 1px solid #ccc;
+          cursor: pointer;
+          .image {
+            height: 60px;
+            width: 100px;
+            @include flexBox(center, center, column);
+          }
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+          }
+        }
+
+        tr:nth-child(even) {
+          background-color: #eee;
+        }
+      }
+    }
+  }
+}
+
+@include mQ(600px) {
+  .table table {
+    font-size: 0.9rem;
+  }
+  .employee__expenses .expense__content fieldset h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  .employee__expenses .add__icon {
+    bottom: 1rem;
+    right: 2rem;
+  }
+  .employee__expenses .intro {
+    font-size: 1.3rem;
+  }
+}

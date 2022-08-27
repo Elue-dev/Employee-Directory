@@ -11,7 +11,7 @@ import { database, storage } from "../../firebase";
 import { deleteDoc, doc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import Notiflix from "notiflix";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   FILTER_BY_DEPARTMENT,
@@ -56,10 +56,13 @@ export default function Home() {
     );
   }, [dispatch, employees, search]);
 
-  const filterByDepartment = (dept) => {
-    setDepts(dept);
+  useEffect(() => {
+    dispatch(FILTER_BY_DEPARTMENT({ employees, depts }));
+  }, [dispatch, employees, depts]);
+
+  const filterByDepartment = (e) => {
+    setDepts(e.target.value);
     setSearch("");
-    dispatch(FILTER_BY_DEPARTMENT({ employees, departments: dept }));
   };
 
   const handleShowDetails = (id, name) => {
@@ -129,7 +132,10 @@ export default function Home() {
       <div className="add__icon" onClick={handleShowForm}>
         <AiOutlinePlus className="icon" />
       </div>
-      <p className="welcome">Welcome, {user.displayName}!</p>
+      <div className="nav__secondary">
+        <Link to="/employee-expenses">See Employee Expenses</Link>
+        <p className="welcome">Welcome, {user.displayName}!</p>
+      </div>
       <div className="employees__list">
         <label className="label">
           <input
@@ -142,15 +148,11 @@ export default function Home() {
         </label>
         <div className="departments">
           <p>Filter By Department:</p>
-          {departments.map((department, index) => (
-            <li
-              key={index}
-              onClick={() => filterByDepartment(department)}
-              className={depts === department ? "active" : null}
-            >
-              {department}
-            </li>
-          ))}
+          <select value={depts} onChange={filterByDepartment}>
+            {departments.map((department) => (
+              <option key={department}>{department}</option>
+            ))}
+          </select>
         </div>
         {search ? (
           <>

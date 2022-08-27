@@ -35,7 +35,7 @@
       }
     }
     .content__det {
-      @include flexBox(center, center, row);
+      @include flexBox(center, center, column);
       gap: 0.9rem;
       padding: 1rem 0;
       .image_w {
@@ -49,6 +49,17 @@
       }
       .content {
         line-height: 1.7;
+        text-align: center;
+      }
+      .e_expenses {
+        .e_title {
+          text-transform: uppercase;
+          border-top: 1px solid #333;
+          font-style: italic;
+          padding-top: 0.4rem;
+          color: rgb(199, 55, 84);
+          font-weight: 700;
+        }
       }
     }
   }
