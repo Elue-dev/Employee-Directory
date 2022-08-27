@@ -14,7 +14,7 @@ export default function EmployeeDetails() {
   const { data } = useFetchCollection("expenses");
   const navigate = useNavigate();
   const filteredExpenses = expenses?.find(
-    (ex) => ex.employee_name.toLowercase === employee?.name
+    (ex) => ex.employee_name === employee?.name
   );
 
   useEffect(() => {

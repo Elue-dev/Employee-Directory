@@ -104,6 +104,12 @@
   }
 }
 
+@include mQ(900px) {
+  .employee__expenses .add__icon {
+    right: 4rem;
+  }
+}
+
 @include mQ(600px) {
   .table table {
     font-size: 0.9rem;
