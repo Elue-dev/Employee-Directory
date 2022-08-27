@@ -166,7 +166,7 @@ export default function Home() {
         ) : null}
         {filteredEmployees.length === 0 ? (
           <>
-            <h2 className="no__results">No employees match your search</h2>
+            <h2 className="no__results">No employees found</h2>
           </>
         ) : (
           <div className="table">
