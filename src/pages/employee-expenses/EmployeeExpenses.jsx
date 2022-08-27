@@ -137,8 +137,8 @@ export default function EmployeeExpenses() {
           <h3>Sort Expenses</h3>
           <select value={sort} onChange={handleSorting}>
             <option value="Default">Default</option>
-            <option value="Lowest Total">Lowest Total</option>
-            <option value="Highest Total">Highest Total</option>
+            <option value="Lowest Total">Sort by Lowest Total</option>
+            <option value="Highest Total">Sort by Highest Total</option>
             <option value="New">Status: New</option>
             <option value="Processing">Status: Processing</option>
             <option value="Reinbursed">Status: Reinbursed</option>
