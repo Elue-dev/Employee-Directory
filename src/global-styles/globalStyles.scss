@@ -44,3 +44,15 @@ textarea {
 
 $mainColor: rgba(14, 16, 30, 0.937);
 $box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+@include mQ(600px) {
+  .section {
+    background: rgba(0, 0, 0, 0.7);
+    height: 100vh;
+    position: auto;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+}
