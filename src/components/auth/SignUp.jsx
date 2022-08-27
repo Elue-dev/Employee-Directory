@@ -16,16 +16,23 @@ export default function SignUp() {
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const passwordRef = useRef();
-  const emailRef = useRef(null);
+  const nameRef = useRef(null);
   const { googleSignIn, signup, updateName } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    emailRef.current.focus();
+    nameRef.current.focus();
   }, []);
 
   const signUpUser = async (e) => {
     e.preventDefault();
+
+    if (!username) {
+      setError("Username is a required field");
+      window.setTimeout(() => setError(null), 4000);
+      return;
+    }
+
     if (!email) {
       setError("Email is a required field");
       window.setTimeout(() => setError(null), 4000);
@@ -33,11 +40,6 @@ export default function SignUp() {
     }
     if (!password) {
       setError("Password is a required field");
-      window.setTimeout(() => setError(null), 4000);
-      return;
-    }
-    if (!username) {
-      setError("Username is a required field");
       window.setTimeout(() => setError(null), 4000);
       return;
     }
@@ -84,6 +86,7 @@ export default function SignUp() {
     try {
       setLoading(true);
       await googleSignIn();
+      navigate("/")
       setLoading(false);
     } catch (error) {
       setError(error.message);
@@ -115,6 +118,7 @@ export default function SignUp() {
                   <input
                     type="text"
                     value={username}
+                    ref={nameRef}
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Enter a username"
                   />
@@ -128,7 +132,6 @@ export default function SignUp() {
                 <input
                   type="email"
                   value={email}
-                  ref={emailRef}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
                 />
