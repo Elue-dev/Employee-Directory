@@ -146,7 +146,7 @@ export default function EmployeeExpenses() {
         </fieldset>
         {filteredExpenses.length === 0 ? (
           <h2 className="no__results">
-            No results for that sorting / filtering
+            No expenses found
           </h2>
         ) : (
           <div className="table">
