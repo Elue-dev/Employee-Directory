@@ -145,14 +145,14 @@ export default function EmployeeExpenses() {
           </select>
         </fieldset>
         {sort && sort !== "Default" && (
-          <h2 style={{ margin: "1rem 0", fontSize: "1.2rem" }}>
+          <h3 style={{ margin: "1rem 0" }}>
             <em>{filteredExpenses.length} Results</em>
-          </h2>
+          </h3>
         )}
         {merchants && merchants !== "All" && (
-          <h2 style={{ margin: "1rem 0" }}>
-            {filteredExpenses.length} RESULTS
-          </h2>
+          <h3 style={{ margin: "1rem 0" }}>
+            <em>{filteredExpenses.length} Results </em>
+          </h3>
         )}
         {filteredExpenses.length === 0 ? (
           <h2 className="no__results">No expenses found</h2>
