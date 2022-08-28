@@ -141,7 +141,7 @@ export default function EmployeeExpenses() {
             <option value="Highest Total">Sort by Highest Total</option>
             <option value="New">Status: New</option>
             <option value="Processing">Status: Processing</option>
-            <option value="Reinbursed">Status: Reinbursed</option>
+            <option value="Reimbursed">Status: Reimbursed</option>
           </select>
         </fieldset>
         {filteredExpenses.length === 0 ? (
