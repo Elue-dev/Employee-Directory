@@ -59,14 +59,14 @@ const filterSlice = createSlice({
       if (sort === "New") {
         tempExpenses = expenses.filter((product) => product.status === "New");
       }
-      if (sort === "Processing") {
+      if (sort === "In Progress") {
         tempExpenses = expenses.filter(
-          (product) => product.status === "Processing"
+          (product) => product.status === "In Progress"
         );
       }
-      if (sort === "Reinbursed") {
+      if (sort === "Reimbursed") {
         tempExpenses = expenses.filter(
-          (product) => product.status === "Reinbursed"
+          (product) => product.status === "Reimbursed"
         );
       }
 

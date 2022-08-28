@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import "./navbar.scss";
 
 export default function Navbar({ setInfo }) {
   const { logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const logOutUser = async () => {
     try {
@@ -24,7 +24,9 @@ export default function Navbar({ setInfo }) {
           <h3>Employee Directory</h3>
         </Link>
         <div className="right__contents">
-          <button onClick={() => setInfo(true)}>INFO</button>
+          {location.pathname === "/" ? (
+            <button onClick={() => setInfo(true)}>INFO</button>
+          ) : null}
           <button onClick={logOutUser}>LOGOUT</button>
         </div>
       </div>

@@ -127,4 +127,8 @@
   .employee__expenses .expense__content fieldset select {
     padding: 0.6rem;
   }
+  .employee__expenses .expense__content .table table th,
+  .employee__expenses .expense__content .table table td {
+    padding: 0px 8px;
+  }
 }

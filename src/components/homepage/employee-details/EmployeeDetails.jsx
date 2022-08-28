@@ -13,9 +13,6 @@ export default function EmployeeDetails() {
   const { document } = useFetchDocuments("employees", id);
   const { data } = useFetchCollection("expenses");
   const navigate = useNavigate();
-  const filteredExpenses = expenses?.filter(
-    (ex) => ex.employee_name === employee?.name
-  );
 
   useEffect(() => {
     setEmployee(document);
@@ -73,7 +70,7 @@ export default function EmployeeDetails() {
               &nbsp;{employee?.addedAt}
             </p>
             <br />
-            <p className="e_expenses">
+            {/* <p className="e_expenses">
               <p className="e_title">Expenses by {employee?.name} <span style={{color: '#333'}}>({filteredExpenses.length})</span></p>
               <>
                 <>
@@ -121,7 +118,7 @@ export default function EmployeeDetails() {
                   )}
                 </>
               </>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

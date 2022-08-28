@@ -31,6 +31,7 @@ export default function Home() {
   const { user } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const filteredEmployees = useSelector(selectFilteredEmployees);
 
   const departments = [

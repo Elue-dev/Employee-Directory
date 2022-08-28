@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import { selectExpenses } from "../../../redux/expenseSlice";
 
 const initialState = {
-  employee_name: "",
   amount: "",
   status: "New",
   merchant: "",
@@ -48,7 +47,6 @@ export default function ExpenseForm({ form, setForm }) {
       const today = new Date();
       const date = today.toLocaleDateString();
       const expenseConfig = {
-        employee_name: expense.employee_name,
         amount: Number(expense.amount),
         status: expense.status,
         merchant: expense.merchant,
@@ -74,7 +72,6 @@ export default function ExpenseForm({ form, setForm }) {
     try {
       const docReference = doc(database, "expenses", id);
       await setDoc(docReference, {
-        employee_name: expense.employee_name,
         amount: Number(expense.amount),
         status: expense.status,
         merchant: expense.merchant,
@@ -100,17 +97,6 @@ export default function ExpenseForm({ form, setForm }) {
         <div className="add__expense__contents">
           <h2>{detectForm(id, "Add New Expense", "Edit Expense")}</h2>
           <form onSubmit={detectForm(id, submitExpense, editExpense)}>
-            <label>
-              <span>Employee Name:</span>
-              <input
-                type="text"
-                name="employee_name"
-                value={expense.employee_name}
-                onChange={(e) => handleInputChange(e)}
-                required
-                placeholder="Name of employee"
-              />
-            </label>
             <label>
               <span>Expense Amount:</span>
               <input
@@ -142,8 +128,8 @@ export default function ExpenseForm({ form, setForm }) {
                 required
               >
                 <option value="New">New</option>
-                <option value="Processing">Processing</option>
-                <option value="Reinbursed">Reinbursed</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Reimbursed">Reimbursed</option>
               </select>
             </label>
             <label>

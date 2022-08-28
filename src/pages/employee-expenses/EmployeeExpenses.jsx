@@ -145,9 +145,7 @@ export default function EmployeeExpenses() {
           </select>
         </fieldset>
         {filteredExpenses.length === 0 ? (
-          <h2 className="no__results">
-            No expenses found
-          </h2>
+          <h2 className="no__results">No expenses found</h2>
         ) : (
           <div className="table">
             <table>
@@ -155,7 +153,6 @@ export default function EmployeeExpenses() {
                 <tr>
                   <th>S/N</th>
                   <th>Date</th>
-                  <th>Employee Name</th>
                   <th>Merchant</th>
                   <th>Total</th>
                   <th>Status</th>
@@ -169,7 +166,6 @@ export default function EmployeeExpenses() {
                   const {
                     id,
                     addedAt,
-                    employee_name,
                     merchant,
                     amount,
                     status,
@@ -180,15 +176,14 @@ export default function EmployeeExpenses() {
                     <tr key={id}>
                       <td>{index + 1}</td>
                       <td>{addedAt}</td>
-                      <td>{employee_name}</td>
                       <td>{merchant}</td>
-                      <td>${amount}</td>
+                      <td>${amount.toFixed(2)}</td>
                       <td
                         style={{
                           color:
-                            status === "Reinbursed"
+                            status === "Reimbursed"
                               ? "green"
-                              : status === "Processing"
+                              : status === "In Progress"
                               ? "orange"
                               : "rgb(199, 55, 84)",
                           fontWeight: "600",
