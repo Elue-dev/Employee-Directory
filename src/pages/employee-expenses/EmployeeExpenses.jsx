@@ -140,10 +140,11 @@ export default function EmployeeExpenses() {
             <option value="Lowest Total">Sort by Lowest Total</option>
             <option value="Highest Total">Sort by Highest Total</option>
             <option value="New">Status: New</option>
-            <option value="Processing">Status: Processing</option>
+            <option value="in Progress">Status: In Progress</option>
             <option value="Reimbursed">Status: Reimbursed</option>
           </select>
         </fieldset>
+        {sort && sort !== 'Default' && <h2>{filteredExpenses.length} RESULTS</h2>}
         {filteredExpenses.length === 0 ? (
           <h2 className="no__results">No expenses found</h2>
         ) : (
