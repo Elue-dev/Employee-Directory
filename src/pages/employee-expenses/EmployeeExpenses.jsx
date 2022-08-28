@@ -140,7 +140,7 @@ export default function EmployeeExpenses() {
             <option value="Lowest Total">Sort by Lowest Total</option>
             <option value="Highest Total">Sort by Highest Total</option>
             <option value="New">Status: New</option>
-            <option value="in Progress">Status: In Progress</option>
+            <option value="In Progress">Status: In Progress</option>
             <option value="Reimbursed">Status: Reimbursed</option>
           </select>
         </fieldset>
