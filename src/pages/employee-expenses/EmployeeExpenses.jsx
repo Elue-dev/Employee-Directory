@@ -144,7 +144,16 @@ export default function EmployeeExpenses() {
             <option value="Reimbursed">Status: Reimbursed</option>
           </select>
         </fieldset>
-        {sort && sort !== 'Default' && <h2>{filteredExpenses.length} RESULTS</h2>}
+        {sort && sort !== "Default" && (
+          <h2 style={{ margin: "1rem 0", fontSize: "1.2rem" }}>
+            <em>{filteredExpenses.length} Results</em>
+          </h2>
+        )}
+        {merchants && merchants !== "All" && (
+          <h2 style={{ margin: "1rem 0" }}>
+            {filteredExpenses.length} RESULTS
+          </h2>
+        )}
         {filteredExpenses.length === 0 ? (
           <h2 className="no__results">No expenses found</h2>
         ) : (
